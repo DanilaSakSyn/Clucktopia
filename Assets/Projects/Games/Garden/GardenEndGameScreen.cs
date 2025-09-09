@@ -208,7 +208,7 @@ namespace Projects.Games.Garden
             else
             {
                 // Если главная сцена не найдена, загружаем первую сцену
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
         }
         
