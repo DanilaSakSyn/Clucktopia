@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "940513154370",
+    "project_id": "clucktopia-31a48",
+    "storage_bucket": "clucktopia-31a48.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:940513154370:ios:35b58e44ffd54455b0e4db",
+        "android_client_info": {
+          "package_name": "com.ceqvwvypcxemy.hmxmvagqadcfkxt"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDjAmI0Qswn8XNCKD17X6ptoe_KN7MG_Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
