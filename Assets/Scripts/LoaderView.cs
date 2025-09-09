@@ -3,57 +3,65 @@ using UnityEngine;
 
 public class LoaderView : MonoBehaviour
 {
-    [Header("Rotation Settings")]
-    [SerializeField] private float rotationSpeed = 360f; // градусов в секунду
-    [SerializeField] private bool rotateOnEnable = true;
-    
-    private Coroutine _rotationCoroutine;
-    private bool _isRotating;
+    [Header("Movement Settings")]
+    [SerializeField] private float movementSpeed = 1f; // скорость движения
+    [SerializeField] private float movementAmplitude = 1f; // амплитуда движения
+    [SerializeField] private bool moveOnEnable = true;
+
+    private Coroutine _movementCoroutine;
+    private bool _isMoving;
 
     private void OnEnable()
     {
-        if (rotateOnEnable)
+        if (moveOnEnable)
         {
-            StartRotation();
+            StartMovement();
         }
     }
 
     private void OnDisable()
     {
-        StopRotation();
+        StopMovement();
     }
 
-    public void StartRotation()
+    public void StartMovement()
     {
-        if (!_isRotating)
+        if (!_isMoving)
         {
-            _isRotating = true;
-            _rotationCoroutine = StartCoroutine(RotateObject());
+            _isMoving = true;
+            _movementCoroutine = StartCoroutine(MoveObject());
         }
     }
 
-    public void StopRotation()
+    public void StopMovement()
     {
-        if (_rotationCoroutine != null)
+        if (_movementCoroutine != null)
         {
-            StopCoroutine(_rotationCoroutine);
-            _rotationCoroutine = null;
+            StopCoroutine(_movementCoroutine);
+            _movementCoroutine = null;
         }
-        _isRotating = false;
+        _isMoving = false;
     }
 
-    private IEnumerator RotateObject()
+    private IEnumerator MoveObject()
     {
-        while (_isRotating)
+        Vector3 startPosition = transform.position;
+        while (_isMoving)
         {
-            // Плавное вращение вокруг Z-оси
-            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+            // Движение вверх и вниз с использованием синусоиды
+            float newY = startPosition.y + Mathf.Sin(Time.time * movementSpeed) * movementAmplitude;
+            transform.position = new Vector3(startPosition.x, newY, startPosition.z);
             yield return null; // Ждем следующий кадр
         }
     }
 
-    public void SetRotationSpeed(float newSpeed)
+    public void SetMovementSpeed(float newSpeed)
     {
-        rotationSpeed = newSpeed;
+        movementSpeed = newSpeed;
+    }
+
+    public void SetMovementAmplitude(float newAmplitude)
+    {
+        movementAmplitude = newAmplitude;
     }
 }

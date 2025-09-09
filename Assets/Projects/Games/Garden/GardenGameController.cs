@@ -104,13 +104,13 @@ namespace Projects.Games.Garden
         {
             if (scoreText != null)
             {
-                scoreText.text = $"Очки: {currentScore}";
+                scoreText.text = $"Score: {currentScore}";
             }
             
             if (timerText != null)
             {
                 int seconds = Mathf.CeilToInt(timeRemaining);
-                timerText.text = $"Время: {seconds}с";
+                timerText.text = $"Time: {seconds}с";
             }
         }
         
